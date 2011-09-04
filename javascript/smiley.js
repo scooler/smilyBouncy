@@ -29,7 +29,7 @@ sB.smiley = (function(window, undefined){
         radgrad1, //dark stuff at the border
         radgrad2; //light bouncing of the siede
       ctx.beginPath();  
-      var radgrad1 = ctx.createRadialGradient(75, 75, 40, 75, 75, 50);  
+      radgrad1 = ctx.createRadialGradient(75, 75, 40, 75, 75, 50);  
       radgrad1.addColorStop(0, '#FFFF00');  
       radgrad1.addColorStop(0.4, '#EEEE00');  
       radgrad1.addColorStop(0.8, '#BBBB00');  
@@ -40,7 +40,7 @@ sB.smiley = (function(window, undefined){
       ctx.closePath();
 
       ctx.beginPath();  
-      var radgrad2 = ctx.createRadialGradient(50, 50, 0, 50, 50, 20);  
+      radgrad2 = ctx.createRadialGradient(50, 50, 0, 50, 50, 20);  
       radgrad2.addColorStop(0, '#FFFFFF');  
       radgrad2.addColorStop(0.8, '#FFFF25');  
       radgrad2.addColorStop(1, '#FFFF00');  
