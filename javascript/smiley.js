@@ -27,17 +27,30 @@ sB.smiley = (function(window, undefined){
     var draw = function(){
       var ctx = context();
       ctx.beginPath();  
+      var radgrad2 = ctx.createRadialGradient(75, 75, 40, 75, 75, 50);  
+      radgrad2.addColorStop(0, '#FFFF00');  
+      radgrad2.addColorStop(0.4, '#EEEE00');  
+      radgrad2.addColorStop(0.8, '#BBBB00');  
+      radgrad2.addColorStop(1, '#999900');  
+      ctx.fillStyle = radgrad2;
+      ctx.arc(75,75,50,0,Math.PI*2,true); // Outer circle  
+      ctx.fill();
+      ctx.closePath();
+      
+      ctx.fillStyle = "black"; 
+      ctx.beginPath();  
       ctx.arc(75,75,50,0,Math.PI*2,true); // Outer circle  
       ctx.moveTo(110,75);  
       ctx.arc(75,75,35,0,Math.PI,false);   // Mouth (clockwise)  
       ctx.moveTo(65,65);  
       ctx.stroke(); 
       ctx.closePath();
+
       ctx.save();
       ctx.scale(0.3, 1);
       ctx.beginPath();
-      ctx.arc(200, 65, 15, 0, Math.PI*2, false);
-      ctx.arc(300, 65, 15, 0, Math.PI*2, false);
+      ctx.arc(200, 65, 15, 0, Math.PI*2, false);  //left eye
+      ctx.arc(300, 65, 15, 0, Math.PI*2, false);  //right eye
       ctx.fill();
       ctx.closePath();
       ctx.restore();
