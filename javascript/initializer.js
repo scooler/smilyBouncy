@@ -6,7 +6,12 @@
     }
   }();
   getContext = function(){
-    var context = getCanvas().getContext("2d");
+    var context
+    if (getCanvas().getContext){  
+     context = getCanvas().getContext("2d");  
+    } else {  
+      alert("No canvas support make canvas app a dull app :P");
+    }  
     return function(){
       return context;
     }
