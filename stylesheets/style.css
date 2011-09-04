@@ -1,0 +1,8 @@
+#board {
+  border: 1px;
+  border-color: black;
+  border-style: solid;
+  margin: 150px;
+  width: 50%;
+  height: 500px;
+}
