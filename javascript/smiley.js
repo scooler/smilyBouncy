@@ -2,10 +2,11 @@ sB.smiley = (function(window, undefined){
   var doc = window.document,
     board = doc.getElementById("board");
   return function(id){
+
     canvas = function(){
       var canvas = doc.createElement("canvas");
-      canvas.width = 150;
-      canvas.height = 150;
+      canvas.width = 250;
+      canvas.height = 250;
       canvas.id = "canvas_"+id
       board.appendChild(canvas); 
       return function(){
@@ -23,6 +24,20 @@ sB.smiley = (function(window, undefined){
         return context;
       }
     }();
+
+    var drawRadialGradient = function(radGrad){
+      var ctx = context(), gradient;
+      ctx.beginPath();  
+      gradient = ctx.createRadialGradient(75, 75, 40, 75, 75, 50);  
+      gradient.addColorStop(0, '#FFFF00');  
+      gradient.addColorStop(0.4, '#EEEE00');  
+      gradient.addColorStop(0.8, '#BBBB00');  
+      gradient.addColorStop(1, '#999900');  
+      ctx.fillStyle = gradient;
+      ctx.arc(75,75,50,0,Math.PI*2,true);
+      ctx.fill();
+      ctx.closePath();
+    }
 
     var drawBackground = function(){
       var ctx = context(), 
@@ -57,9 +72,16 @@ sB.smiley = (function(window, undefined){
       ctx.arc(75,75,50,0,Math.PI*2,true); // Outer circle  
       ctx.moveTo(110,75);  
       ctx.arc(75,75,35,0,Math.PI,false);   // Mouth (clockwise)  
-      ctx.moveTo(65,65);  
       ctx.stroke(); 
       ctx.closePath();
+      
+      ctx.beginPath();  
+      // ctx.strokeStyle = "red"; 
+      ctx.moveTo(110, 75);  
+      ctx.arc(105, 95, 21, 275/360*(2*Math.PI), 295/360*(2*Math.PI),false);   // Mouth (clockwise)  
+      ctx.moveTo(45, 75);  
+      ctx.arc(45, 95, 20, 247/360*(2*Math.PI), 258/360*(2*Math.PI),false);   // Mouth (clockwise)  
+      ctx.stroke(); 
 
       ctx.fillStyle = "black"; 
       ctx.save();
